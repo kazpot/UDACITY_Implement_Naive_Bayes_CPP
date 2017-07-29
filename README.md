@@ -3,12 +3,12 @@ Implement a Gaussian Naive Bayes classifier to predict the behavior (keep, left,
 
 1. calculate mean and standard deviation for each class (Training)
 
-![img1](img/gaussian_naive_bayes.png)
+![img2](img/stddev.png)
 
 2. Substitute mean, standard deviation, and state to Gaussian Naive Bayes Equation  
 per state and choose class that has max probability (Prediction)
 
-![img2](img/stddev.png)
+![img1](img/gaussian_naive_bayes.png)
 
 # Build
 
