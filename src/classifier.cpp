@@ -81,7 +81,7 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
             for (auto i = 0; i < lfm[l].size(); i++){
                 numerator += pow(lfm[l][i][j] - f_stats_[l][0][j], 2);
             }
-            f_stats_[l][1][j] = sqrt(numerator/(class_count[l]-1));
+            f_stats_[l][1][j] = sqrt(numerator/(class_count[l] - 1));
         }
     }
 }
@@ -114,11 +114,12 @@ string GNB::predict(vector <double> vec)
     string result;
 
     for (auto l : labels_list_) {
+        p[l] = 1;
         for (auto i = 0; i < features_count_; i++){
             mean = f_stats_[l][0][i];
             stddev = f_stats_[l][1][i];
-            double exponent = exp(-pow(vec[i] - mean, 2) / (2 * pow(stddev,2)));
-            p[l] += 1.0 /sqrt(2 * M_PI * stddev) * exponent;
+            double exponent = exp(-pow(vec[i] - mean, 2) / (2.0 * pow(stddev, 2)));
+            p[l] *= 1.0 /sqrt(2.0 * 3.141592 * stddev) * exponent;
         }
 
         if (max < p[l]) {
